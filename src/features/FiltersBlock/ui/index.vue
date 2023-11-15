@@ -17,10 +17,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 
-import { CategoryBtn } from "../../../entities/CategoryBtn";
-import { ICategories } from "../../../shared/interfaces";
+import { CategoryBtn } from '../../../entities/CategoryBtn';
+import { ICategories } from '../../../shared/interfaces';
 
 interface FiltersBlockProps {
   title: string;
@@ -28,7 +28,7 @@ interface FiltersBlockProps {
 }
 const props = defineProps<FiltersBlockProps>();
 
-const activeId = ref("buy");
+const activeId = ref('buy');
 </script>
 ../../../../../entities/CategoryBtn
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { defineEmits, ref, watch } from "vue";
-import { onClickOutside } from "@vueuse/core";
-import Arrow from "../../svg/Arrow.vue";
+import { defineEmits, ref, watch } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+import Arrow from '../../svg/Arrow.vue';
 
 interface DropdownProps {
   title: string;
@@ -13,7 +13,7 @@ interface DropdownProps {
 const props = defineProps<DropdownProps>();
 
 const emit = defineEmits<{
-  (e: "update:value", value: string[]): void;
+  (e: 'update:value', value: string[]): void;
 }>();
 
 const isOpen = ref(false);
@@ -31,7 +31,7 @@ onClickOutside(target, () => {
 });
 
 const selectValue = (options: string[]) => {
-  emit("update:value", options);
+  emit('update:value', options);
 };
 
 watch(selectedValues, () => {
@@ -59,7 +59,7 @@ watch(selectedValues, () => {
     <Transition name="dropdown">
       <div v-if="isOpen" class="absolute w-full min-w-[150px] top-[100%]">
         <div
-          class="p-3 bg-secondary w-full flex flex-col gap-2  mt-4 rounded-md"
+          class="p-3 bg-secondary w-full flex flex-col gap-2 mt-4 rounded-md"
         >
           <div
             v-for="(item, index) in props.options"

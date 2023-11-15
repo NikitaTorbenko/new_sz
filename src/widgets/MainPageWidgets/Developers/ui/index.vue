@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ContentBlock } from "../../../../shared/ContentBlock";
-import { DevelopersBlock } from "../../../../features/DevelopersBlock";
+import { ContentBlock } from '../../../../shared/ContentBlock';
+import { DevelopersBlock } from '../../../../features/DevelopersBlock';
 </script>
 <template lang="html">
   <ContentBlock class="mt-[48px] px-[20px]">
