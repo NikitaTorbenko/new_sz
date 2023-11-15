@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply text-black-main
+    }
+}
+
+@layer components {
+    .pagination-btn {
+       @apply cursor-pointer font-semibold h-[32px] w-[32px] rounded-[12px] flex items-center justify-center text-[14px] bg-gray-light  hover:text-blue-main hover:outline hover:outline-1 hover:outline-blue-main
+    }
+    .pagination-btn.active {
+        @apply bg-blue-main text-white hover:text-white hover:outline-none cursor-default
+    }
+    .pagination-btn.disabled {
+        @apply cursor-default opacity-80 hover:text-black-main hover:outline-none
+    }
+}
