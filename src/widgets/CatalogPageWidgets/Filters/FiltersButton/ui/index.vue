@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { TextBtn } from '../../../../../shared/TextButton';
+import { FiltersModal } from '../../../FiltersModal';
 
 const isOpenModal = ref(false);
+
+const openModalHandler = () => (isOpenModal.value = true);
+
+const closeModal = () => {
+  isOpenModal.value = false;
+};
 </script>
 
 <template>
   <!-- Button -->
-  <TextBtn type="secondary" class="md:w-[250px] w-[180px] h-[63px]"
+  <TextBtn
+    @click="openModalHandler"
+    type="secondary"
+    class="md:w-[250px] w-[180px] h-[63px]"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -26,8 +36,15 @@ const isOpenModal = ref(false);
     <span class="ml-[15px]">Фильтры</span></TextBtn
   >
 
+  <!-- <FiltersModal v-if="isOpenModal" /> -->
+
+  <FilterModal title="Фильтры" :visible="isOpenModal" @closeModal="closeModal">
+    <!-- Ваше содержимое модального окна -->
+    <p>Привет, это содержимое модального окна!</p>
+  </FilterModal>
+
   <!-- Clear filter -->
-  <div class="flex items-center">
+  <div class="flex items-center cursor-pointer">
     <span class="text-[#333] text-[14px] mr-[3px]">Отчистить фильтр</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
