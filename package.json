@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.5.0",
+    "axios": "^1.6.2",
     "primevue": "^3.39.0",
     "vue": "^3.3.4"
   },
