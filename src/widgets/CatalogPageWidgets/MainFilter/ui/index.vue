@@ -2,141 +2,29 @@
 import { CheckboxDropdown } from '../../../../shared/CheckboxDropdown';
 import { TextBtn } from '../../../../shared/TextButton';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
+import { Square } from '../../Filters/Square';
+import { Price } from '../../Filters/Price';
+import { ResidentialComplex } from '../../Filters/ResidentialComplex';
+import { Neighborhood } from '../../Filters/Neighborhood';
+import { DueDate } from '../../Filters/DueDate';
+import { Street } from '../../Filters/Street';
 </script>
+
 <template>
   <div class="w-[100vw] md:[61vw] max-w-[1170px] mx-auto my-0 mt-[20px]">
     <div class="flex gap-[16px] justify-between items-end mb-[20px]">
       <NumberOfRooms />
-
-      <div class="">
-        <h4 class="text-[14px] text-[#A8AFBB] mb-[5px]">
-          <!-- через пропсы -->Площадь, м2
-        </h4>
-        <div
-          class="flex items-center rounded-[15px] bg-[#F3F3F6] p-[19px] pb-[21px] gap-[9px]"
-        >
-          <div class="">
-            <span class="text-[#828892] text-[18px]">от</span>
-            <input
-              class="ml-[5px] outline-none text-[#333] text-[18px] font-medium w-[50px] bg-transparent"
-              type="text"
-              placeholder="120,5"
-            />
-          </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M15 12H9"
-              stroke="#828892"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <div class="">
-            <span class="text-[#828892] text-[18px]">до</span>
-            <input
-              class="ml-[5px] outline-none text-[#333] text-[18px] font-medium w-[50px] bg-transparent"
-              type="text"
-              placeholder="170,5"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Filter Item -->
-
-      <div class="">
-        <h4 class="text-[14px] text-[#A8AFBB] mb-[5px]">
-          <!-- через пропсы -->Цена
-        </h4>
-        <div
-          class="flex items-center rounded-[15px] bg-[#F3F3F6] p-[20px] gap-[9px]"
-        >
-          <div class="">
-            <span class="text-[#828892] text-[18px]">от</span>
-            <input
-              class="mx-[5px] outline-none text-[#333] text-[18px] font-medium w-[85px] bg-transparent"
-              type="text"
-              placeholder="1 254 897"
-            />
-            <span class="text-[#828892] text-[18px]">₽</span>
-          </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M15 12H9"
-              stroke="#828892"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <div class="">
-            <span class="text-[#828892] text-[18px]">до</span>
-            <input
-              class="mx-[5px] outline-none text-[#333] text-[18px] font-medium w-[95px] bg-transparent"
-              type="text"
-              placeholder="12 254 897"
-            />
-            <span class="text-[#828892] text-[18px]">₽</span>
-          </div>
-        </div>
-      </div>
-      <div class="">
-        <h4 class="text-[14px] text-[#A8AFBB] mb-[5px]">
-          <!-- через пропсы -->Жилой комплекс
-        </h4>
-        <CheckboxDropdown
-          class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-[230px]"
-          title="Любой"
-          id="id"
-        />
-      </div>
+      <Square />
+      <Price />
+      <ResidentialComplex />
     </div>
-    <div class="flex gap-[16px] justify-between items-end mb-[20px]">
-      <div class="">
-        <h4 class="text-[14px] text-[#A8AFBB] mb-[5px]">
-          <!-- через пропсы -->Район
-        </h4>
-        <CheckboxDropdown
-          class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-[230px]"
-          title="Любой"
-          id="id"
-        />
-      </div>
-      <div class="">
-        <h4 class="text-[14px] text-[#A8AFBB] mb-[5px]">
-          <!-- через пропсы -->Срок сдачи
-        </h4>
-        <CheckboxDropdown
-          class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-[230px]"
-          title="Любой"
-          id="id"
-        />
-      </div>
-      <div class="">
-        <h4 class="text-[14px] text-[#A8AFBB] mb-[5px]">
-          <!-- через пропсы -->Улица
-        </h4>
-        <CheckboxDropdown
-          class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-[230px]"
-          title="Любой"
-          id="id"
-        />
-      </div>
-      <!-- Button -->
 
+    <div class="flex gap-[16px] justify-between items-end mb-[20px]">
+      <Neighborhood />
+      <DueDate />
+      <Street />
+
+      <!-- Button -->
       <TextBtn type="secondary" class="md:w-[250px] w-[180px] h-[63px]"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -156,6 +44,7 @@ import { NumberOfRooms } from '../../Filters/NumberOfRooms';
         <span class="ml-[15px]">Фильтры</span></TextBtn
       >
 
+      <!-- Clear filter -->
       <div class="flex items-center">
         <span class="text-[#333] text-[14px] mr-[3px]">Отчистить фильтр</span>
         <svg

@@ -18,11 +18,14 @@
         <TextBtn type="border" class="md:w-[180px] w-[100%] h-[52px]"
           ><FilledLocationIcon /> На карте</TextBtn
         >
-        <TextBtn
+        <TextBtn type="blue" class="md:w-[180px] w-[100%] h-[52px]"
+          >Найти</TextBtn
+        >
+        <!-- <TextBtn
           @click="loginRequest"
           type="blue"
           class="md:w-[180px] w-[100%] h-[52px]"
-          >Найти</TextBtn
+          >Логин</TextBtn
         >
         <TextBtn
           @click="registrationRequest"
@@ -35,7 +38,7 @@
           type="blue"
           class="md:w-[180px] w-[100%] h-[52px]"
           >Логаут</TextBtn
-        >
+        > -->
       </div>
     </div>
   </div>
