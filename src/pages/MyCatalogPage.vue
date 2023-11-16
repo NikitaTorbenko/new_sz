@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Header } from '../widgets/CatalogPageWidgets/Header';
 import { MainFilter } from '../widgets/CatalogPageWidgets/MainFilter';
+import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
 
 // import { ref } from 'vue';
 
@@ -26,4 +27,5 @@ import { MainFilter } from '../widgets/CatalogPageWidgets/MainFilter';
 <template>
   <Header />
   <MainFilter />
+  <CatalogList />
 </template>
