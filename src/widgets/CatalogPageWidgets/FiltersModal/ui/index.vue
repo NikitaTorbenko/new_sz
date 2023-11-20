@@ -60,11 +60,11 @@ onClickOutside(modal, () => closeModal());
   <!-- Фон -->
   <div
     v-if="isOpenModal"
-    class="bg-[#00000021] z-50 fixed p-[40px] top-0 left-0 w-full h-full flex justify-center items-center"
+    class="bg-[#00000021] z-50 fixed md:p-[40px] p-0 top-0 left-0 w-full h-full flex justify-center items-center"
   >
     <!-- Сама модалка -->
     <div
-      class="selector p-[40px] overflow-y-auto rounded-[5px] bg-[#fff] flex flex-col justify-between gap-[23px] max-w-[644px] w-full max-h-[796px] h-full"
+      class="selector p-[40px] overflow-y-auto rounded-[5px] bg-[#fff] flex flex-col justify-between gap-[23px] max-w-full w-full md:max-w-[644px] max-h-full h-full md:max-h-[796px]"
       ref="modal"
     >
       <div class="flex justify-between items-start">
@@ -93,7 +93,7 @@ onClickOutside(modal, () => closeModal());
         <h4 class="mb-[12px] text-[18px] text-blue-main font-medium">
           Квартира
         </h4>
-        <div class="flex flex-wrap gap-[12px]">
+        <div class="flex flex-wrap gap-[12px] justify-between">
           <FilterItem title="Площадь кухни, м2">
             <InputFromTo
               v-model:from="kitchenSquareFrom"
@@ -123,7 +123,7 @@ onClickOutside(modal, () => closeModal());
           />
         </FilterItem>
       </div>
-      <div class="flex gap-[12px] flex-wrap">
+      <div class="flex gap-[12px] flex-wrap justify-between">
         <FilterItem title="Материал стен">
           <CheckboxDropdown
             title="Выбрать"
