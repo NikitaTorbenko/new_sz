@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 import FilterItem from './FilterItem.vue';
 import CheckBox from './CheckBox.vue';
 import InputFromTo from './InputFromTo.vue';
@@ -59,11 +59,11 @@ onClickOutside(modal, () => closeModal());
   <!-- Фон -->
   <div
     v-if="isOpenModal"
-    class="bg-[#00000021] fixed top-0 left-0 w-full h-full flex justify-center items-center"
+    class="bg-[#00000021] z-50 fixed top-0 left-0 w-full h-full flex justify-center items-center"
   >
     <!-- Сама модалка -->
     <div
-      class="p-[40px] overflow-y-auto rounded-[5px] bg-[#fff] z-100 flex flex-col justify-between gap-[23px] w-[644px] h-[796px]"
+      class="selector p-[40px] overflow-y-auto rounded-[5px] bg-[#fff] flex flex-col justify-between gap-[23px] w-[644px] h-[796px]"
       ref="modal"
     >
       <div class="flex justify-between items-start">
@@ -171,3 +171,9 @@ onClickOutside(modal, () => closeModal());
     </div>
   </div>
 </template>
+
+<style scoped>
+.selector::-webkit-scrollbar {
+  display: none;
+}
+</style>
