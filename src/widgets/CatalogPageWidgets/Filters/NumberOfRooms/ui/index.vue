@@ -70,7 +70,7 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
       <div class="text-[14px] lg:text-[18px] text-[#333]">4к+</div>
     </div>
     <div
-      class="flex lg:hidden items-center rounded-[15px] bg-[#F3F3F6] p-[17px] gap-[15px]"
+      class="flex lg:hidden items-center w-full min-w-[280px] rounded-[15px] bg-[#F3F3F6] p-[17px] gap-[15px]"
     >
       <div class="text-[14px] text-[#333]">Студия</div>
       <svg

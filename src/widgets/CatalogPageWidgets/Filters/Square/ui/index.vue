@@ -40,13 +40,14 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
       </div>
     </div>
     <div
-      class="flex lg:hidden items-center rounded-[15px] bg-[#F3F3F6] py-[11px] px-[20px] gap-[20px]"
+      class="flex lg:hidden items-center gap-[20px] w-full min-w-[280px] rounded-[15px] bg-[#F3F3F6] py-[11px] px-[20px]"
     >
       <input
-        class="outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[85px] bg-transparent"
+        class="mr-[11px] outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[85px] bg-transparent"
         type="text"
         placeholder="Площадь от"
       />
+      <!-- <div class="flex items-center gap-[20px]"> -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="2"
@@ -65,6 +66,7 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
         type="text"
         placeholder="Площадь до"
       />
+      <!-- </div> -->
     </div>
   </FilterItem>
 </template>

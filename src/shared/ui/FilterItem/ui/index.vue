@@ -8,7 +8,7 @@ defineProps<FilterItemProps>();
 
 <template>
   <div>
-    <h4 class="hidden md:block text-[14px] text-[#A8AFBB] mb-[5px]">
+    <h4 class="hidden lg:block text-[14px] text-[#A8AFBB] mb-[5px]">
       {{ title }}
     </h4>
     <slot />

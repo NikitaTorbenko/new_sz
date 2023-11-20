@@ -45,7 +45,7 @@
         <!-- <br class="block sm:hidden" /> -->
         Ростове-на-Дону
       </h1>
-      <div class="hidden sm:flex gap-[20px]">
+      <div class="hidden lg:flex gap-[20px]">
         <div
           class="bg-blue-main cursor-pointer flex justify-center items-center p-[13px] rounded-[13px]"
         >
