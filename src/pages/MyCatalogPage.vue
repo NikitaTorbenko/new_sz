@@ -32,7 +32,7 @@ import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
 <template>
   <Header />
   <MainFilter />
-  <!-- <CatalogList /> -->
+  <CatalogList />
 
   <!-- <YandexMap :settings="settings" :coordinates="coordinates">
     <YandexMarker :coordinates="coordinates" :marker-id="123">

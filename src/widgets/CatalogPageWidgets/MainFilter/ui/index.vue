@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
 import { Square } from '../../Filters/Square';
 import { Price } from '../../Filters/Price';
@@ -10,7 +11,12 @@ import { Street } from '../../Filters/Street';
 import { FiltersButton } from '../../Filters/FiltersButton';
 import { OnMapBtn } from '../../Filters/OnMapBtn';
 import { ShowOffers } from '../../Filters/ShowOffers';
+import { FiltersModal } from '../../FiltersModal';
 import { TextBtn } from '../../../../shared/TextButton';
+
+const isOpenModal = ref(false);
+
+const openModalHandler = () => (isOpenModal.value = true);
 </script>
 
 <template>
@@ -24,7 +30,13 @@ import { TextBtn } from '../../../../shared/TextButton';
       <Square />
       <Price />
       <FullAddress />
-      <TextBtn type="secondary" class="flex lg:hidden w-[280px] h-[52px]"
+
+      <FiltersModal v-model:is-open-modal="isOpenModal" />
+
+      <TextBtn
+        @click="openModalHandler"
+        type="secondary"
+        class="flex lg:hidden w-[280px] h-[52px]"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -51,7 +63,7 @@ import { TextBtn } from '../../../../shared/TextButton';
       <Neighborhood />
       <DueDate />
       <Street />
-      <FiltersButton />
+      <FiltersButton :openModalHandler="openModalHandler" />
     </div>
   </div>
 </template>

@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { TextBtn } from '../../../../../shared/TextButton';
-import { FiltersModal } from '../../../FiltersModal';
 
-const isOpenModal = ref(false);
+interface FiltersBtnProps {
+  openModalHandler: () => void;
+}
 
-const openModalHandler = () => (isOpenModal.value = true);
-
-const closeModal = () => {
-  isOpenModal.value = false;
-};
+defineProps<FiltersBtnProps>();
 </script>
 
 <template>
@@ -35,11 +31,6 @@ const closeModal = () => {
     </svg>
     <span class="ml-[15px]">Фильтры</span></TextBtn
   >
-
-  <!-- <FiltersModal v-if="isOpenModal" /> -->
-
-  <!-- <FilterModal title="Фильтры" :visible="isOpenModal" @closeModal="closeModal">
-  </FilterModal> -->
 
   <!-- Clear filter -->
   <div class="flex items-center cursor-pointer">
