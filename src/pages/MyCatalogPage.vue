@@ -2,7 +2,6 @@
 import { Header } from '../widgets/CatalogPageWidgets/Header';
 import { MainFilter } from '../widgets/CatalogPageWidgets/MainFilter';
 import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
-
 // import { ref } from 'vue';
 
 // const value = ref<string>('');
@@ -24,6 +23,7 @@ import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
 // };
 
 // import { YandexMap, YandexMarker } from 'vue-yandex-maps';
+// import { settings } from '../main';
 // import { NewProductCardSmall } from '../features/NewProductCardSmall';
 
 // const coordinates = [55, 33];
@@ -34,13 +34,11 @@ import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
   <MainFilter />
   <!-- <CatalogList /> -->
 
-  <!-- <div id="app" style="width: 600px; height: 400px">
-    <YandexMap :coordinates="coordinates">
-      <YandexMarker :coordinates="coordinates" :marker-id="123">
-        <template #component>
-          <NewProductCardSmall />
-        </template>
-      </YandexMarker>
-    </YandexMap>
-  </div> -->
+  <!-- <YandexMap :settings="settings" :coordinates="coordinates">
+    <YandexMarker :coordinates="coordinates" :marker-id="123">
+      <template #component>
+        <NewProductCardSmall />
+      </template>
+    </YandexMarker>
+  </YandexMap> -->
 </template>

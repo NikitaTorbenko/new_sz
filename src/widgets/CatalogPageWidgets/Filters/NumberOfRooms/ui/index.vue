@@ -5,9 +5,9 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
 <template>
   <FilterItem title="Количество комнат">
     <div
-      class="flex items-center rounded-[15px] bg-[#F3F3F6] px-[20px] py-[9px] gap-[15px]"
+      class="hidden lg:flex items-center rounded-[15px] bg-[#F3F3F6] p-[17px] lg:px-[20px] lg:py-[9px] gap-[15px]"
     >
-      <div class="text-[18px] text-[#333]">Студия</div>
+      <div class="text-[14px] lg:text-[18px] text-[#333]">Студия</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="2"
@@ -22,7 +22,7 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           stroke-linecap="round"
         />
       </svg>
-      <div class="text-[18px] text-[#333]">1к</div>
+      <div class="text-[14px] lg:text-[18px] text-[#333]">1к</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="2"
@@ -37,7 +37,7 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           stroke-linecap="round"
         />
       </svg>
-      <div class="text-[18px] text-[#333]">2к</div>
+      <div class="text-[14px] lg:text-[18px] text-[#333]">2к</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="2"
@@ -52,7 +52,7 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           stroke-linecap="round"
         />
       </svg>
-      <div class="text-[18px] text-[#333]">3к</div>
+      <div class="text-[14px] lg:text-[18px] text-[#333]">3к</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="2"
@@ -67,7 +67,52 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           stroke-linecap="round"
         />
       </svg>
-      <div class="text-[18px] text-[#333]">4к+</div>
+      <div class="text-[14px] lg:text-[18px] text-[#333]">4к+</div>
+    </div>
+    <div
+      class="flex lg:hidden items-center rounded-[15px] bg-[#F3F3F6] p-[17px] gap-[15px]"
+    >
+      <div class="text-[14px] text-[#333]">Студия</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="2"
+        height="18"
+        viewBox="0 0 2 18"
+        fill="none"
+      >
+        <path d="M1 1L1 17" stroke="#A8AFBB" stroke-linecap="round" />
+      </svg>
+      <div class="text-[14px] text-[#333]">1к</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="2"
+        height="18"
+        viewBox="0 0 2 18"
+        fill="none"
+      >
+        <path d="M1 1L1 17" stroke="#A8AFBB" stroke-linecap="round" />
+      </svg>
+      <div class="text-[14px] text-[#333]">2к</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="2"
+        height="18"
+        viewBox="0 0 2 18"
+        fill="none"
+      >
+        <path d="M1 1L1 17" stroke="#A8AFBB" stroke-linecap="round" />
+      </svg>
+      <div class="text-[14px] text-[#333]">3к</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="2"
+        height="18"
+        viewBox="0 0 2 18"
+        fill="none"
+      >
+        <path d="M1 1L1 17" stroke="#A8AFBB" stroke-linecap="round" />
+      </svg>
+      <div class="text-[14px] text-[#333]">4к+</div>
     </div>
   </FilterItem>
 </template>

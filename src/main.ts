@@ -5,7 +5,7 @@ import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/lara-light-teal/theme.css';
 import YmapPlugin from 'vue-yandex-maps';
 
-const settings = {
+export const settings = {
   apiKey: '34fd3bf2-a278-46e1-be60-28504fb1e52b',
   lang: 'ru_RU',
   coordorder: 'latlong',
