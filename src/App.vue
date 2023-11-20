@@ -4,6 +4,6 @@ import MyMainPage from './pages/MyMainPage.vue';
 </script>
 
 <template>
-  <MyMainPage />
+  <!-- <MyMainPage /> -->
   <MyCatalogPage />
 </template>

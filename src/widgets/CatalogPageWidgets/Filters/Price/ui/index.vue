@@ -8,15 +8,18 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
       class="flex items-center rounded-[15px] bg-[#F3F3F6] p-[20px] gap-[9px]"
     >
       <div class="">
-        <span class="text-[#828892] text-[18px]">от</span>
+        <span class="hidden md:inline text-[#828892] text-[14px] md:text-[18px]"
+          >от</span
+        >
         <input
-          class="mx-[5px] outline-none text-[#333] text-[18px] font-medium w-[85px] bg-transparent"
+          class="mx-[5px] outline-none text-[#333] text-[14px] md:text-[18px] font-medium w-[85px] bg-transparent"
           type="text"
           placeholder="1 254 897"
         />
-        <span class="text-[#828892] text-[18px]">₽</span>
+        <span class="text-[#828892] text-[16px] md:text-[18px]">₽</span>
       </div>
       <svg
+        class="hidden md:block"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -32,13 +35,15 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
         />
       </svg>
       <div class="">
-        <span class="text-[#828892] text-[18px]">до</span>
+        <span class="hidden md:inline text-[#828892] text-[14px] md:text-[18px]"
+          >до</span
+        >
         <input
-          class="mx-[5px] outline-none text-[#333] text-[18px] font-medium w-[95px] bg-transparent"
+          class="mx-[5px] outline-none text-[#333] text-[14px] md:text-[18px] font-medium w-[95px] bg-transparent"
           type="text"
           placeholder="12 254 897"
         />
-        <span class="text-[#828892] text-[18px]">₽</span>
+        <span class="text-[#828892] text-[16px] md:text-[18px]">₽</span>
       </div>
     </div>
   </FilterItem>

@@ -38,10 +38,8 @@ const closeModal = () => {
 
   <!-- <FiltersModal v-if="isOpenModal" /> -->
 
-  <FilterModal title="Фильтры" :visible="isOpenModal" @closeModal="closeModal">
-    <!-- Ваше содержимое модального окна -->
-    <p>Привет, это содержимое модального окна!</p>
-  </FilterModal>
+  <!-- <FilterModal title="Фильтры" :visible="isOpenModal" @closeModal="closeModal">
+  </FilterModal> -->
 
   <!-- Clear filter -->
   <div class="flex items-center cursor-pointer">

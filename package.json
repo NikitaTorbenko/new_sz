@@ -9,10 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^10.5.0",
+    "@vueuse/core": "^10.6.1",
     "axios": "^1.6.2",
     "primevue": "^3.39.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-yandex-maps": "^1.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
