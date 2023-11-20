@@ -22,11 +22,10 @@ import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
 //   }
 // };
 
-// import { YandexMap, YandexMarker } from 'vue-yandex-maps';
-// import { settings } from '../main';
-// import { NewProductCardSmall } from '../features/NewProductCardSmall';
+import { YandexMap, YandexMapDefaultSchemeLayer } from 'vue-yandex-maps';
 
-// const coordinates = [55, 33];
+//Можно использовать для различных преобразований
+const map = null;
 </script>
 
 <template>
@@ -34,11 +33,17 @@ import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
   <MainFilter />
   <CatalogList />
 
-  <!-- <YandexMap :settings="settings" :coordinates="coordinates">
-    <YandexMarker :coordinates="coordinates" :marker-id="123">
-      <template #component>
-        <NewProductCardSmall />
-      </template>
-    </YandexMarker>
-  </YandexMap> -->
+  <yandex-map
+    v-model="map"
+    :settings="{
+      location: {
+        center: [37.617644, 55.755819],
+        zoom: 9,
+      },
+    }"
+    width="100%"
+    height="500px"
+  >
+    <yandex-map-default-scheme-layer />
+  </yandex-map>
 </template>
