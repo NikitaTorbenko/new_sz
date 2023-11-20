@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 import FilterItem from './FilterItem.vue';
 import CheckBox from './CheckBox.vue';
 import InputFromTo from './InputFromTo.vue';
-import { onClickOutside } from '@vueuse/core';
+import { CheckboxDropdown } from '../../../../shared/CheckboxDropdown';
 
 interface FiltersModalProps {
   isOpenModal: boolean;
@@ -59,11 +60,11 @@ onClickOutside(modal, () => closeModal());
   <!-- Фон -->
   <div
     v-if="isOpenModal"
-    class="bg-[#00000021] z-50 fixed top-0 left-0 w-full h-full flex justify-center items-center"
+    class="bg-[#00000021] z-50 fixed p-[40px] top-0 left-0 w-full h-full flex justify-center items-center"
   >
     <!-- Сама модалка -->
     <div
-      class="selector p-[40px] overflow-y-auto rounded-[5px] bg-[#fff] flex flex-col justify-between gap-[23px] w-[644px] h-[796px]"
+      class="selector p-[40px] overflow-y-auto rounded-[5px] bg-[#fff] flex flex-col justify-between gap-[23px] max-w-[644px] w-full max-h-[796px] h-full"
       ref="modal"
     >
       <div class="flex justify-between items-start">
@@ -114,36 +115,27 @@ onClickOutside(modal, () => closeModal());
         </div>
       </div>
       <div>
-        <h4 class="mb-[12px] text-[18px] text-blue-main font-medium">
-          Квартира
-        </h4>
-        <div class="flex flex-wrap gap-[12px]">
-          <FilterItem title="Площадь кухни, м2">
-            <InputFromTo
-              v-model:from="kitchenSquareFrom"
-              v-model:to="kitchenSquareTo"
-            />
-          </FilterItem>
-          <div>
-            <FilterItem title="Этаж">
-              <InputFromTo v-model:from="priceFrom" v-model:to="priceTo" />
-            </FilterItem>
-            <div class="flex gap-[16px] mt-[12px]">
-              <CheckBox title="Не первый" v-model:checkboxValue="notTheFirst" />
-              <CheckBox
-                title="Не последний"
-                v-model:checkboxValue="notTheLast"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
         <h4 class="mb-[12px] text-[18px] text-blue-main font-medium">Дом</h4>
         <FilterItem title="Этажей в доме">
           <InputFromTo
             v-model:from="floorsInTheHouseFrom"
             v-model:to="floorsInTheHouseTo"
+          />
+        </FilterItem>
+      </div>
+      <div class="flex gap-[12px] flex-wrap">
+        <FilterItem title="Материал стен">
+          <CheckboxDropdown
+            title="Выбрать"
+            class="bg-transparent rounded-[4px] border-[1px] border-[#D9D9D9] min-w-[276px] min-h-[48px] py-1 pt-2"
+            id="id"
+          />
+        </FilterItem>
+        <FilterItem title="Застройщик">
+          <CheckboxDropdown
+            title="Выбрать"
+            class="bg-transparent rounded-[4px] border-[1px] border-[#D9D9D9] min-w-[276px] min-h-[48px] py-1 pt-2"
+            id="id"
           />
         </FilterItem>
       </div>
@@ -164,7 +156,7 @@ onClickOutside(modal, () => closeModal());
         </div>
       </div>
       <div
-        class="flex lg:hidden justify-center items-center w-[260px] min-h-[48px] rounded-[15px] bg-blue-main text-[15px] text-[#fff] font-bold"
+        class="flex justify-center items-center w-[260px] min-h-[48px] rounded-[15px] bg-blue-main text-[15px] text-[#fff] font-bold"
       >
         Показать 6123 предложений
       </div>
