@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import EditingIcon from '../../../../shared/assets/icons/catalog/EditingIcon.vue';
+import MapIcon from '../../../../shared/assets/icons/catalog/MapIcon.vue';
+
+interface HeaderProps {
+  isMap: boolean;
+}
+
+const props = defineProps<HeaderProps>();
+
+interface HeaderEmits {
+  (e: 'update:isMap', value: boolean): void;
+}
+
+const emits = defineEmits<HeaderEmits>();
+
+const onMap = () => emits('update:isMap', true);
+const fromMap = () => emits('update:isMap', false);
+</script>
+
 <template>
   <div
     class="w-[100vw] md:[61vw] max-w-[1170px] mx-auto my-0 mt-[42px] px-[20px]"
@@ -47,17 +67,20 @@
       </h1>
       <div class="hidden lg:flex gap-[20px]">
         <div
-          class="bg-blue-main cursor-pointer flex justify-center items-center p-[13px] rounded-[13px]"
+          @click="fromMap"
+          :class="`${
+            props.isMap ? 'bg-[#F4F6FB]' : 'bg-blue-main'
+          } cursor-pointer flex justify-center items-center p-[13px] rounded-[13px]`"
         >
-          <img
-            src="../../../../shared/assets/icons/catalog/Editing.svg"
-            alt=""
-          />
+          <EditingIcon v-model:isMap="props.isMap" />
         </div>
         <div
-          class="bg-[#F4F6FB] cursor-pointer flex justify-center items-center p-[13px] rounded-[13px]"
+          @click="onMap"
+          :class="`${
+            props.isMap ? 'bg-blue-main' : 'bg-[#F4F6FB]'
+          } cursor-pointer flex justify-center items-center p-[13px] rounded-[13px]`"
         >
-          <img src="../../../../shared/assets/icons/catalog/map.svg" alt="" />
+          <MapIcon v-model:isMap="props.isMap" />
         </div>
       </div>
     </div>

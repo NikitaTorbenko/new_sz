@@ -10,9 +10,25 @@ import { DueDate } from '../../Filters/DueDate';
 import { Street } from '../../Filters/Street';
 import { FiltersButton } from '../../Filters/FiltersButton';
 import { OnMapBtn } from '../../Filters/OnMapBtn';
+import { ShowProductListBtn } from '../../Filters/ShowProductListBtn';
 import { ShowOffers } from '../../Filters/ShowOffers';
 import { FiltersModal } from '../../FiltersModal';
 import { TextBtn } from '../../../../shared/TextButton';
+
+interface MainFilterProps {
+  isMap: boolean;
+}
+
+const props = defineProps<MainFilterProps>();
+
+interface MainFilterEmits {
+  (e: 'update:isMap', value: boolean): void;
+}
+
+const emits = defineEmits<MainFilterEmits>();
+
+const onMap = () => emits('update:isMap', true);
+const fromMap = () => emits('update:isMap', false);
 
 const isOpenModal = ref(false);
 
@@ -29,6 +45,7 @@ const openModalHandler = () => (isOpenModal.value = true);
       <NumberOfRooms />
       <Square />
       <Price />
+      <ResidentialComplex class="hidden lg:block address-top" />
       <FullAddress />
 
       <FiltersModal v-model:is-open-modal="isOpenModal" />
@@ -55,11 +72,12 @@ const openModalHandler = () => (isOpenModal.value = true);
         <span class="ml-[15px] text-[15px]">Фильтры</span></TextBtn
       >
       <ShowOffers />
-      <OnMapBtn />
+      <OnMapBtn v-if="props.isMap" @click="fromMap" />
+      <ShowProductListBtn v-else @click="onMap" />
     </div>
 
     <div class="hidden lg:flex gap-[16px] justify-between items-end mb-[20px]">
-      <ResidentialComplex />
+      <ResidentialComplex class="hidden lg:block address-bottom" />
       <Neighborhood />
       <DueDate />
       <Street />
@@ -67,3 +85,17 @@ const openModalHandler = () => (isOpenModal.value = true);
     </div>
   </div>
 </template>
+
+<style scoped>
+.address-bottom {
+  display: none;
+}
+@media (max-width: 1086px) {
+  .address-top {
+    display: none;
+  }
+  .address-bottom {
+    display: block;
+  }
+}
+</style>

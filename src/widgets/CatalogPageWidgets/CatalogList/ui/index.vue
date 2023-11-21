@@ -38,31 +38,29 @@ const cards = [
 </script>
 
 <template>
-  <div class="bg-[#F4F6FB]">
-    <div
-      class="py-[44px] grid grid-cols-[repeat(auto-fill,minmax(354px,1fr))] justify-items-center gap-[40px] lg:gap-[28px] lg:flex lg:flex-wrap lg:justify-between lg:items-center w-[100vw] md:[61vw] max-w-[1170px] mx-auto my-0 mt-[42px] px-[20px]"
-    >
-      <NewProductCard
-        v-for="(item, index) in [
-          ...cards,
-          ...cards,
-          ...cards,
-          ...cards,
-          ...cards,
-          ...cards,
-        ]"
-        :key="index"
-        :studio="item.studio"
-        :one="item.one"
-        :two="item.two"
-        :three="item.three"
-        :title="item.title"
-        :date="item.date"
-        :price="item.price"
-        :district="item.district"
-        :flats-count="item.flatsCount"
-        class="inline-block"
-      />
-    </div>
+  <div
+    class="grid grid-cols-[repeat(auto-fill,minmax(354px,1fr))] justify-items-center gap-[40px] lg:gap-[28px] lg:flex lg:flex-wrap lg:justify-between lg:items-center w-[100vw] md:[61vw] max-w-[1170px] mx-auto my-0 mt-[42px]"
+  >
+    <NewProductCard
+      v-for="(item, index) in [
+        ...cards,
+        ...cards,
+        ...cards,
+        ...cards,
+        ...cards,
+        ...cards,
+      ]"
+      :key="index"
+      :studio="item.studio"
+      :one="item.one"
+      :two="item.two"
+      :three="item.three"
+      :title="item.title"
+      :date="item.date"
+      :price="item.price"
+      :district="item.district"
+      :flats-count="item.flatsCount"
+      class="inline-block"
+    />
   </div>
 </template>

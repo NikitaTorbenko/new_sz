@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { IconBtn } from "../../../shared/IconBtn";
-import like from "../../../shared/assets/icons/like.svg";
-import { TextBtn } from "../../../shared/TextButton";
+import { IconBtn } from '../../../shared/IconBtn';
+import like from '../../../shared/assets/icons/like.svg';
+import { TextBtn } from '../../../shared/TextButton';
 
 interface ProductCardProps {
   price: string | number;
@@ -26,9 +26,7 @@ interface ProductCardProps {
 const props = defineProps<ProductCardProps>();
 </script>
 <template lang="html">
-  <div
-    class="lg:w-[32%] 2xl:w-[30%] rounded-[15px] bg-white pb-[22px]"
-  >
+  <div class="lg:w-[32%] 2xl:w-[30%] rounded-[15px] bg-white pb-[22px]">
     <div
       class="relative bg-[url('/img/product_example.jpg')] rounded-[15px] h-[215px] bg-cover w-full"
     >
@@ -50,7 +48,7 @@ const props = defineProps<ProductCardProps>();
       </div>
     </div>
     <div
-      class="flex justify-between px-[18px] mt-[18px] mb-[18px] items-center gap-[70px]"
+      class="flex justify-between px-[18px] mt-[18px] mb-[18px] items-center gap-[20px]"
     >
       <div>
         <p class="2xl:text-[21px] lg:text-[18px] w-fit font-bold text-[#333]">

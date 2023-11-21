@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { Header } from '../widgets/CatalogPageWidgets/Header';
 import { MainFilter } from '../widgets/CatalogPageWidgets/MainFilter';
 import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
-// import { ref } from 'vue';
+import { Map } from '../widgets/CatalogPageWidgets/Map';
+
+const isMap = ref(false);
 
 // const value = ref<string>('');
 
@@ -21,29 +24,13 @@ import { CatalogList } from '../widgets/CatalogPageWidgets/CatalogList';
 //     }
 //   }
 // };
-
-import { YandexMap, YandexMapDefaultSchemeLayer } from 'vue-yandex-maps';
-
-//Можно использовать для различных преобразований
-const map = null;
 </script>
 
 <template>
-  <Header />
-  <MainFilter />
-  <CatalogList />
-
-  <yandex-map
-    v-model="map"
-    :settings="{
-      location: {
-        center: [37.617644, 55.755819],
-        zoom: 9,
-      },
-    }"
-    width="100%"
-    height="500px"
-  >
-    <yandex-map-default-scheme-layer />
-  </yandex-map>
+  <Header v-model:isMap="isMap" />
+  <MainFilter v-model:isMap="isMap" />
+  <div class="flex flex-wrap md:flex-nowrap gap-[20px] bg-[#F4F6FB] px-[20px]">
+    <CatalogList :class="isMap && 'w-[50%]'" />
+    <Map v-if="isMap" />
+  </div>
 </template>

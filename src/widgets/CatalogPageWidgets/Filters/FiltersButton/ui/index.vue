@@ -13,7 +13,7 @@ defineProps<FiltersBtnProps>();
   <TextBtn
     @click="openModalHandler"
     type="secondary"
-    class="md:w-[250px] w-[180px] h-[63px]"
+    class="md:w-[250px] min-w-[180px] w-[180px] h-[63px]"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -34,21 +34,25 @@ defineProps<FiltersBtnProps>();
 
   <!-- Clear filter -->
   <div class="flex items-center cursor-pointer">
-    <span class="text-[#333] text-[14px] mr-[3px]">Отчистить фильтр</span>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
+    <span class="text-[#333] text-[14px] mr-[3px] whitespace-nowrap"
+      >Отчистить фильтр</span
     >
-      <path
-        d="M14.9999 14.9999L10 10M10 10L5 5M10 10L15 5M10 10L5 15"
-        stroke="#014EBA"
-        stroke-width="1.66667"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
+    <div class="w-[20px] ml-[3px]">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+      >
+        <path
+          d="M14.9999 14.9999L10 10M10 10L5 5M10 10L15 5M10 10L5 15"
+          stroke="#014EBA"
+          stroke-width="1.66667"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
   </div>
 </template>

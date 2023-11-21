@@ -42,7 +42,7 @@ watch(selectedValues, () => {
   <div class="w-fit relative" ref="target">
     <div
       @click="handleClick"
-      class="py-2 px-5 flex justify-between cursor-pointer items-center"
+      class="py-2 px-5 flex justify-between cursor-pointer items-center w-full"
     >
       <p class="select-none text-[16px] text-[#333]">
         {{

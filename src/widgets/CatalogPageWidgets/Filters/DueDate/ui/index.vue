@@ -4,9 +4,9 @@ import { CheckboxDropdown } from '../../../../../shared/CheckboxDropdown';
 </script>
 
 <template>
-  <FilterItem title="Срок сдачи">
+  <FilterItem class="w-full" title="Срок сдачи">
     <CheckboxDropdown
-      class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-[230px]"
+      class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-full"
       title="Любой"
       id="id"
     />
