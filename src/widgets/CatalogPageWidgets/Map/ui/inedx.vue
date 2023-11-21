@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { YandexMap, YandexMarker } from 'vue-yandex-maps';
+import { NewProductCardSmall } from '../../../../features/NewProductCardSmall';
 
 const settings = ref({
   apiKey: '1bc4c10e-abd5-4d94-8f04-2446a564060b',
@@ -22,27 +23,48 @@ const onClick = e => console.log(e.get('coords'));
       }"
       :settings="settings"
       :coordinates="[47.236826043254595, 39.71301759069304]"
-      :zoom="17"
+      :zoom="15"
     >
-      <YandexMarker
-        :coordinates="[48.236826043254595, 39.71301759069304]"
+      <!-- <YandexMarker
+        :coordinates="[47.246826043254595, 39.71301759069304]"
         :marker-id="123"
       >
         <template #component>
           <div class="">iuwhojlqwd</div>
         </template>
-      </YandexMarker>
+      </YandexMarker> -->
       <YandexMarker
         :coordinates="[47.236826043254565, 39.71301759069304]"
         :marker-id="123"
+        class="yandex-balloon text-inherit w-[1000px]"
       >
-        <template #component>
-          <div class="">iuwhojlqwdqwdqwd</div>
+        <template class="w-[300px] h-[300px]" #component>
+          <!-- <div class="w-[300px] h-[300px]">iuwhojlqwdqwdqwd</div> -->
+          <NewProductCardSmall
+            :key="index"
+            :studio="{ title: 'Студии', area: '27,44', price: '4,3' }"
+            :one="{ title: '1-комн.', area: '33,87', price: '5,3' }"
+            :two="{ title: '2-комн.', area: '55,55', price: '6,3' }"
+            :three="{ title: '3-комн.', area: '74,6', price: '8,3' }"
+            :title="'ЖК «Рубин»'"
+            :date="'4 кв. 2023 - 4 кв. 2024'"
+            :price="'9.2'"
+            :district="'Центральный район Ворошиловский пр-кт, 24'"
+            :flats-count="'247'"
+            class="inline-block"
+          />
         </template>
       </YandexMarker>
     </YandexMap>
   </div>
 </template>
+
+<style>
+.yandex-balloon {
+  height: 500px;
+  width: 500px;
+}
+</style>
 
 <!-- <script setup>
 import { ref } from 'vue';

@@ -26,8 +26,8 @@ interface ProductCardProps {
 const props = defineProps<ProductCardProps>();
 </script>
 
-<template lang="html">
-  <div class="lg:w-[32%] 2xl:w-[30%] rounded-[15px] bg-white pb-[22px]">
+<template>
+  <div class="w-full rounded-[15px] bg-white pb-[22px]">
     <div
       class="relative bg-[url('/img/product_example.jpg')] rounded-[15px] h-[215px] bg-cover w-full"
     >
