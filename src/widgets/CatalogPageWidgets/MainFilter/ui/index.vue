@@ -72,8 +72,8 @@ const openModalHandler = () => (isOpenModal.value = true);
         <span class="ml-[15px] text-[15px]">Фильтры</span></TextBtn
       >
       <ShowOffers />
-      <OnMapBtn v-if="props.isMap" @click="fromMap" />
-      <ShowProductListBtn v-else @click="onMap" />
+      <ShowProductListBtn v-if="props.isMap" @click="fromMap" />
+      <OnMapBtn v-else @click="onMap" />
     </div>
 
     <div class="hidden lg:flex gap-[16px] justify-between items-end mb-[20px]">

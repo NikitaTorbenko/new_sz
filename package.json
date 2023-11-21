@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "axios": "^1.6.2",
     "primevue": "^3.39.0",
     "vue": "^3.3.4",
-    "vue-yandex-maps": "^2.0.0-beta.7"
+    "vue-yandex-maps": "^1.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
