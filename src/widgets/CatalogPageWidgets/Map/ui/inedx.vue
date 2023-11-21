@@ -15,11 +15,12 @@ const onClick = e => console.log(e.get('coords'));
 </script>
 
 <template>
-  <div class="w-[40%] rounded-[15px] overflow-hidden sticky top-0 h-[100vh]">
+  <div class="w-[60%] rounded-[15px] overflow-hidden sticky top-0 h-[100vh]">
     <YandexMap
       @click="onClick"
       :style="{
         height: 100 + '%',
+        width: 100 + '%',
       }"
       :settings="settings"
       :coordinates="[47.236826043254595, 39.71301759069304]"
@@ -36,7 +37,7 @@ const onClick = e => console.log(e.get('coords'));
       <YandexMarker
         :coordinates="[47.236826043254565, 39.71301759069304]"
         :marker-id="123"
-        class="yandex-balloon text-inherit w-[1000px]"
+        class="yandex-balloon"
       >
         <template class="w-[300px] h-[300px]" #component>
           <!-- <div class="w-[300px] h-[300px]">iuwhojlqwdqwdqwd</div> -->
@@ -61,8 +62,8 @@ const onClick = e => console.log(e.get('coords'));
 
 <style>
 .yandex-balloon {
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 300px;
 }
 </style>
 
