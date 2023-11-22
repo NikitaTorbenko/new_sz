@@ -5,15 +5,27 @@ import FilterItem from './FilterItem.vue';
 import CheckBox from './CheckBox.vue';
 import InputFromTo from './InputFromTo.vue';
 import { CheckboxDropdown } from '../../../../shared/CheckboxDropdown';
+import { useProductStore } from '../../../../shared/store';
 
-const floors_building_from = inject('floors_building_from');
-const floors_building_to = inject('floors_building_to');
-const lit_floor_to = inject('lit_floor_to');
-const lit_floor_from = inject('lit_floor_from');
-const square_kitchen_from = inject('square_kitchen_from');
-const square_kitchen_to = inject('square_kitchen_to');
-const zastroi = inject('zastroi');
-const wall_material = inject('wall_material');
+// const floors_building_from = inject('floors_building_from');
+// const floors_building_to = inject('floors_building_to');
+// const lit_floor_to = inject('lit_floor_to');
+// const lit_floor_from = inject('lit_floor_from');
+// const square_kitchen_from = inject('square_kitchen_from');
+// const square_kitchen_to = inject('square_kitchen_to');
+// const zastroi = inject('zastroi');
+// const wall_material = inject('wall_material');
+
+const {
+  floors_building_from,
+  floors_building_to,
+  lit_floor_to,
+  lit_floor_from,
+  square_kitchen_from,
+  square_kitchen_to,
+  // zastroi,
+  // wall_material,
+} = useProductStore();
 
 interface FiltersModalProps {
   isOpenModal: boolean;

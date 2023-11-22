@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { ref, provide, watch, onMounted } from 'vue';
-import { AllJk } from '../../../../shared/api/services';
+import {
+  AllJk,
+  getDistricts,
+  getProduct,
+} from '../../../../shared/api/services';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
 import { Square } from '../../Filters/Square';
 import { Price } from '../../Filters/Price';
@@ -16,6 +20,27 @@ import { ShowProductListBtn } from '../../Filters/ShowProductListBtn';
 import { ShowOffers } from '../../Filters/ShowOffers';
 import { FiltersModal } from '../../FiltersModal';
 import { TextBtn } from '../../../../shared/TextButton';
+import { useProductsStore } from '../../../../shared/store';
+
+const {
+  count_room,
+  flat_from,
+  flat_to,
+  floors_building_from,
+  floors_building_to,
+  lit_floor_to,
+  lit_floor_from,
+  square_kitchen_from,
+  square_kitchen_to,
+  flat_square_full_to,
+  flat_square_full_from,
+  from_cost,
+  to_cost,
+  zastroi,
+  jk_name,
+  district,
+  wall_material,
+} = useProductsStore();
 
 interface JkObj {
   name: string;
@@ -24,13 +49,6 @@ interface JkObj {
 
 // const jk = ref<JkObj[]>([]);
 const jk = ref<string[]>([]);
-
-onMounted(async () => {
-  const { data: allJk } = await AllJk();
-
-  // jk.value = allJk.all_jk;
-  jk.value = Object.values(allJk.all_jk).map(item => item.jk_name);
-});
 
 interface MainFilterProps {
   isMap: boolean;
@@ -53,33 +71,33 @@ const openModalHandler = () => (isOpenModal.value = true);
 
 const city = ref(1); // ================== город (по умолчанию ростов)
 
-const count_room = ref<number[]>([]); // = количество комнат в квартире
+// const count_room = ref<number[]>([]); // = количество комнат в квартире
 
-const flat_from = ref(''); // ============ комнат в жк
-const flat_to = ref('');
+// const flat_from = ref(''); // ============ комнат в жк
+// const flat_to = ref('');
 
-const floors_building_from = ref(''); // = этаж //========================= расширенные фильтры
-const floors_building_to = ref('');
+// const floors_building_from = ref(''); // = этаж //========================= расширенные фильтры
+// const floors_building_to = ref('');
 
-const lit_floor_to = ref<number>(); // == этажей в доме
-const lit_floor_from = ref<number>();
+// const lit_floor_to = ref<number>(); // == этажей в доме
+// const lit_floor_from = ref<number>();
 
-const square_kitchen_from = ref(''); // = площадь кухни //================= расширенные фильтры
-const square_kitchen_to = ref('');
+// const square_kitchen_from = ref(''); // = площадь кухни //================= расширенные фильтры
+// const square_kitchen_to = ref('');
 
-const flat_square_full_to = ref(''); //  общая площадь
-const flat_square_full_from = ref('');
+// const flat_square_full_to = ref(''); //  общая площадь
+// const flat_square_full_from = ref('');
 
-const from_cost = ref(''); // ========== цена
-const to_cost = ref('');
+// const from_cost = ref(''); // ========== цена
+// const to_cost = ref('');
 
-const zastroi = ref(''); // ============ застройщик //==================== расширенные фильтры
+// const zastroi = ref(''); // ============ застройщик //==================== расширенные фильтры
 
-const jk_name = ref<string[]>([]); // == жк название
+// const jk_name = ref<string[]>([]); // == жк название
 
-const district = ref(''); // =========== район
+// const district = ref(''); // =========== район
 
-const wall_material = ref(1); // ======= материал стен //================== расширенные фильтры
+// const wall_material = ref(1); // ======= материал стен //================== расширенные фильтры
 
 const count = ref(false); // =========== количество квартир подходящее под данные фильтры
 
@@ -92,9 +110,38 @@ provide('square_kitchen_to', square_kitchen_to);
 provide('zastroi', zastroi);
 provide('wall_material', wall_material);
 
-watch(lit_floor_from, () =>
-  console.log('lit_floor_from', lit_floor_from.value)
-);
+const filteredData = ref<any[]>([]);
+
+onMounted(async () => {
+  const { data: products } = getProduct({
+    count_room: count_room.value ?? false,
+    // flat_from: flat_from.value,
+    // flat_to: flat_to.value,
+    // floors_building_from: floors_building_from.value,
+    // floors_building_to: floors_building_to.value,
+    // from_cost: from_cost.value,
+    // square_kitchen_from: square_kitchen_from.value,
+    // square_kitchen_to: square_kitchen_to.value,
+    // flat_square_full_to: flat_square_full_to.value,
+    // flat_square_full_from: flat_square_full_from.value,
+    // to_cost: to_cost.value,
+    // zastroi: zastroi.value,
+    // // jk_name: jk_name.value,
+    // count: count.value,
+    // district: district.value,
+    wall_material: wall_material.value,
+  });
+
+  filteredData.value = products;
+
+  const { data: allJk } = await AllJk();
+  const { data: destricts } = await getDistricts();
+
+  // jk.value = allJk.all_jk;
+  jk.value = Object.values(allJk.all_jk).map(item => item.jk_name);
+});
+
+watch(flat_square_full_from, () => console.log(filteredData.value));
 </script>
 
 <template>
