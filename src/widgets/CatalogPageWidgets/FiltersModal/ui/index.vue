@@ -1,19 +1,38 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import FilterItem from './FilterItem.vue';
 import CheckBox from './CheckBox.vue';
 import InputFromTo from './InputFromTo.vue';
 import { CheckboxDropdown } from '../../../../shared/CheckboxDropdown';
 
+const floors_building_from = inject('floors_building_from');
+const floors_building_to = inject('floors_building_to');
+const square_kitchen_from = inject('square_kitchen_from');
+const square_kitchen_to = inject('square_kitchen_to');
+const zastroi = inject('zastroi');
+const wall_material = inject('wall_material');
+
 interface FiltersModalProps {
   isOpenModal: boolean;
+  // floors_building_from: string;
+  // floors_building_to: string;
+  // square_kitchen_from: string;
+  // square_kitchen_to: string;
+  // zastroi: string;
+  // wall_material: number;
 }
 
-defineProps<FiltersModalProps>();
+const props = defineProps<FiltersModalProps>();
 
 interface FiltersBtnEmits {
   (e: 'update:isOpenModal', value: boolean): void;
+  // (e: 'update:floors_building_from', value: string): void;
+  // (e: 'update:floors_building_to', value: string): void;
+  // (e: 'update:square_kitchen_from', value: string): void;
+  // (e: 'update:square_kitchen_to', value: string): void;
+  // (e: 'update:zastroi', value: string): void;
+  // (e: 'update:wall_material', value: number): void;
 }
 
 const emit = defineEmits<FiltersBtnEmits>();
@@ -33,15 +52,6 @@ const closeModal = () => {
 //   if (body) body.style.overflow = 'auto';
 // });
 
-const kitchenSquareFrom = ref('');
-const kitchenSquareTo = ref('');
-
-const priceFrom = ref('');
-const priceTo = ref('');
-
-const floorsInTheHouseFrom = ref('');
-const floorsInTheHouseTo = ref('');
-
 const notTheFirst = ref(false);
 const notTheLast = ref(false);
 
@@ -59,7 +69,7 @@ onClickOutside(modal, () => closeModal());
 <template>
   <!-- Фон -->
   <div
-    v-if="isOpenModal"
+    v-if="props.isOpenModal"
     class="bg-[#00000021] z-50 fixed md:p-[40px] p-0 top-0 left-0 w-full h-full flex justify-center items-center"
   >
     <!-- Сама модалка -->
@@ -96,13 +106,16 @@ onClickOutside(modal, () => closeModal());
         <div class="flex flex-wrap gap-[12px] justify-between">
           <FilterItem title="Площадь кухни, м2">
             <InputFromTo
-              v-model:from="kitchenSquareFrom"
-              v-model:to="kitchenSquareTo"
+              v-model:from="square_kitchen_from"
+              v-model:to="square_kitchen_to"
             />
           </FilterItem>
           <div>
             <FilterItem title="Этаж">
-              <InputFromTo v-model:from="priceFrom" v-model:to="priceTo" />
+              <InputFromTo
+                v-model:from="floors_building_from"
+                v-model:to="floors_building_to"
+              />
             </FilterItem>
             <div class="flex gap-[16px] mt-[12px]">
               <CheckBox title="Не первый" v-model:checkboxValue="notTheFirst" />
@@ -118,8 +131,8 @@ onClickOutside(modal, () => closeModal());
         <h4 class="mb-[12px] text-[18px] text-blue-main font-medium">Дом</h4>
         <FilterItem title="Этажей в доме">
           <InputFromTo
-            v-model:from="floorsInTheHouseFrom"
-            v-model:to="floorsInTheHouseTo"
+            v-model:from="floors_building_from"
+            v-model:to="floors_building_to"
           />
         </FilterItem>
       </div>

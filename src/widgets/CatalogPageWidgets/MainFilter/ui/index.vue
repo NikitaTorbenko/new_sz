@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { FlatLinks, AllJk } from '../../../../shared/api/services';
+import { ref, provide, watch, onMounted } from 'vue';
+import { AllJk } from '../../../../shared/api/services';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
 import { Square } from '../../Filters/Square';
 import { Price } from '../../Filters/Price';
@@ -65,13 +64,24 @@ const to_cost = ref('');
 
 const zastroi = ref(''); // ============ застройщик //==================== расширенные фильтры
 
-const jk_name = ref(''); // ============ жк название
+const jk_name = ref<string[]>([]); // ============ жк название
 
 const district = ref(''); // =========== район
 
 const wall_material = ref(1); // ======= материал стен //================== расширенные фильтры
 
 const count = ref(false); // =========== количество квартир подходящее под данные фильтры
+
+provide('floors_building_from', floors_building_from);
+provide('floors_building_to', floors_building_to);
+provide('square_kitchen_from', square_kitchen_from);
+provide('square_kitchen_to', square_kitchen_to);
+provide('zastroi', zastroi);
+provide('wall_material', wall_material);
+
+watch(square_kitchen_from, () =>
+  console.log('square_kitchen_from', square_kitchen_from.value)
+);
 </script>
 
 <template>
@@ -93,7 +103,15 @@ const count = ref(false); // =========== количество квартир п�
       />
       <FullAddress />
 
-      <FiltersModal v-model:is-open-modal="isOpenModal" />
+      <FiltersModal
+        v-model:floors_building_from="floors_building_from"
+        v-model:floors_building_to="floors_building_to"
+        v-model:square_kitchen_from="square_kitchen_from"
+        v-model:square_kitchen_to="square_kitchen_to"
+        v-model:zastroi="zastroi"
+        v-model:wall_material="wall_material"
+        v-model:is-open-modal="isOpenModal"
+      />
 
       <TextBtn
         @click="openModalHandler"
