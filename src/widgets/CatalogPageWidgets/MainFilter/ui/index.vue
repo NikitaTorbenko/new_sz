@@ -53,6 +53,9 @@ const flat_to = ref('');
 const floors_building_from = ref(''); // = этаж //========================= расширенные фильтры
 const floors_building_to = ref('');
 
+const lit_floor_to = ref<number>(); // === этажей в доме
+const lit_floor_from = ref<number>();
+
 const square_kitchen_from = ref(''); // = площадь кухни //================= расширенные фильтры
 const square_kitchen_to = ref('');
 
@@ -74,13 +77,15 @@ const count = ref(false); // =========== количество квартир п�
 
 provide('floors_building_from', floors_building_from);
 provide('floors_building_to', floors_building_to);
+provide('lit_floor_to', lit_floor_to);
+provide('lit_floor_from', lit_floor_from);
 provide('square_kitchen_from', square_kitchen_from);
 provide('square_kitchen_to', square_kitchen_to);
 provide('zastroi', zastroi);
 provide('wall_material', wall_material);
 
-watch(square_kitchen_from, () =>
-  console.log('square_kitchen_from', square_kitchen_from.value)
+watch(lit_floor_from, () =>
+  console.log('lit_floor_from', lit_floor_from.value)
 );
 </script>
 

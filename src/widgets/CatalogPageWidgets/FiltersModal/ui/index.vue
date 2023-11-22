@@ -8,6 +8,8 @@ import { CheckboxDropdown } from '../../../../shared/CheckboxDropdown';
 
 const floors_building_from = inject('floors_building_from');
 const floors_building_to = inject('floors_building_to');
+const lit_floor_to = inject('lit_floor_to');
+const lit_floor_from = inject('lit_floor_from');
 const square_kitchen_from = inject('square_kitchen_from');
 const square_kitchen_to = inject('square_kitchen_to');
 const zastroi = inject('zastroi');
@@ -27,12 +29,6 @@ const props = defineProps<FiltersModalProps>();
 
 interface FiltersBtnEmits {
   (e: 'update:isOpenModal', value: boolean): void;
-  // (e: 'update:floors_building_from', value: string): void;
-  // (e: 'update:floors_building_to', value: string): void;
-  // (e: 'update:square_kitchen_from', value: string): void;
-  // (e: 'update:square_kitchen_to', value: string): void;
-  // (e: 'update:zastroi', value: string): void;
-  // (e: 'update:wall_material', value: number): void;
 }
 
 const emit = defineEmits<FiltersBtnEmits>();
@@ -113,8 +109,8 @@ onClickOutside(modal, () => closeModal());
           <div>
             <FilterItem title="Этаж">
               <InputFromTo
-                v-model:from="floors_building_from"
-                v-model:to="floors_building_to"
+                v-model:from="lit_floor_from"
+                v-model:to="lit_floor_to"
               />
             </FilterItem>
             <div class="flex gap-[16px] mt-[12px]">
