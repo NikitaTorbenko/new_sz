@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import { FlatLinks, AllJk } from '../../../../shared/api/services';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
 import { Square } from '../../Filters/Square';
 import { Price } from '../../Filters/Price';
@@ -14,6 +16,14 @@ import { ShowProductListBtn } from '../../Filters/ShowProductListBtn';
 import { ShowOffers } from '../../Filters/ShowOffers';
 import { FiltersModal } from '../../FiltersModal';
 import { TextBtn } from '../../../../shared/TextButton';
+
+const jkNames = ref<string[]>([]);
+
+onMounted(async () => {
+  const { data: allJk } = await AllJk();
+
+  jkNames.value = Object.values(allJk.all_jk).map(item => item.jk_name);
+});
 
 interface MainFilterProps {
   isMap: boolean;
@@ -34,11 +44,11 @@ const isOpenModal = ref(false);
 
 const openModalHandler = () => (isOpenModal.value = true);
 
-const city = ref(1); // ====================== город (по умолчанию ростов)
+const city = ref(1); // ================== город (по умолчанию ростов)
 
-const count_room = ref<number[]>([]); // ===== количество комнат в квартире
+const count_room = ref<number[]>([]); // = количество комнат в квартире
 
-const flat_from = ref(''); // ================ комнат в жк
+const flat_from = ref(''); // ============ комнат в жк
 const flat_to = ref('');
 
 const floors_building_from = ref(''); // = этаж //========================= расширенные фильтры
@@ -77,7 +87,10 @@ const count = ref(false); // =========== количество квартир п�
         v-model:to="flat_square_full_to"
       />
       <Price v-model:from="from_cost" v-model:to="to_cost" />
-      <ResidentialComplex class="hidden lg:block address-top" />
+      <ResidentialComplex
+        v-model:jkNames="jkNames"
+        class="hidden lg:block address-top"
+      />
       <FullAddress />
 
       <FiltersModal v-model:is-open-modal="isOpenModal" />
@@ -109,7 +122,10 @@ const count = ref(false); // =========== количество квартир п�
     </div>
 
     <div class="hidden lg:flex gap-[16px] justify-between items-end mb-[20px]">
-      <ResidentialComplex class="hidden lg:block address-bottom" />
+      <ResidentialComplex
+        v-model:jkNames="jkNames"
+        class="hidden lg:block address-bottom"
+      />
       <Neighborhood />
       <DueDate />
       <Street />

@@ -57,14 +57,14 @@ watch(selectedValues, () => {
       />
     </div>
     <Transition name="dropdown">
-      <div v-if="isOpen" class="absolute w-full min-w-[150px] top-[100%]">
+      <div v-if="isOpen" class="absolute w-fit min-w-[150px] top-[100%]">
         <div
           class="p-3 bg-secondary w-full flex flex-col gap-2 mt-4 rounded-md"
         >
           <div
             v-for="(item, index) in props.options"
             :key="index"
-            class="flex items-center gap-[8px] hover:text-blue-main/80 w-full"
+            class="flex items-center gap-[8px] hover:text-blue-main/80 w-full z-10"
           >
             <input
               type="checkbox"
