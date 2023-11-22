@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
 import { Square } from '../../Filters/Square';
 import { Price } from '../../Filters/Price';
@@ -33,6 +33,31 @@ const fromMap = () => emits('update:isMap', false);
 const isOpenModal = ref(false);
 
 const openModalHandler = () => (isOpenModal.value = true);
+
+const allFilters = ref({
+  city: 1, // ====================== город (по умолчанию ростов)
+  count_room: [], // =============== количество комнат в квартире
+  flat_from: '', // ================ комнат в жк
+  flat_to: '',
+  floors_building_from: '', //====== этаж // ===================================================== расширенные фильтры
+  floors_building_to: '',
+  square_kitchen_from: '', //====== площадь кухни // ============================================= расширенные фильтры
+  square_kitchen_to: '',
+  flat_square_full_to: '', //====== общая площадь
+  flat_square_full_from: '',
+  from_cost: '', // =============== цена
+  to_cost: '',
+  zastroi: '', // ================= застройщик // ================================================ расширенные фильтры
+  jk_name: '', // ================= жк название
+  district: '', // ================ район
+
+  wall_material: 1, // ============ материал стен //============================================== расширенные фильтры
+  count: false, // ================ количество квартир подходящее под данные фильтры
+});
+
+watch(allFilters, () => {
+  console.log('allFilters', allFilters.value);
+});
 </script>
 
 <template>
