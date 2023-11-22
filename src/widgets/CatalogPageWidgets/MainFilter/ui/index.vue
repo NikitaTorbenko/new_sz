@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { FlatLinks, AllJk } from '../../../../shared/api/services';
+import { AllJk } from '../../../../shared/api/services';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
 import { Square } from '../../Filters/Square';
 import { Price } from '../../Filters/Price';
@@ -17,12 +16,19 @@ import { ShowOffers } from '../../Filters/ShowOffers';
 import { FiltersModal } from '../../FiltersModal';
 import { TextBtn } from '../../../../shared/TextButton';
 
+interface jkObj {
+  name: string;
+  id: number;
+}
+
+const jkObjects = ref<jkObj[]>([]);
 const jkNames = ref<string[]>([]);
 
 onMounted(async () => {
   const { data: allJk } = await AllJk();
 
   jkNames.value = Object.values(allJk.all_jk).map(item => item.jk_name);
+  jkObjects.value = allJk.all_jk;
 });
 
 interface MainFilterProps {
