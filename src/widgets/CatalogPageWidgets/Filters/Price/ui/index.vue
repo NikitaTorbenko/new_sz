@@ -1,5 +1,27 @@
 <script setup lang="ts">
 import { FilterItem } from '../../../../../shared/ui/FilterItem';
+
+interface PriceProps {
+  from: string;
+  to: string;
+}
+
+defineProps<PriceProps>();
+
+interface PriceEmit {
+  (e: 'update:from', value: string): void;
+  (e: 'update:to', value: string): void;
+}
+
+const emit = defineEmits<PriceEmit>();
+
+const updateFrom = (e: any) => {
+  emit('update:from', e.target.value);
+};
+
+const updateTo = (e: any) => {
+  emit('update:to', e.target.value);
+};
 </script>
 
 <template>
@@ -15,6 +37,8 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           class="mx-[5px] outline-none text-[#333] text-[14px] md:text-[18px] font-medium w-[85px] bg-transparent"
           type="text"
           placeholder="1 254 897"
+          :value="from"
+          @input="updateFrom"
         />
         <span class="text-[#828892] text-[16px] md:text-[18px]">₽</span>
       </div>
@@ -42,6 +66,8 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           class="mx-[5px] outline-none text-[#333] text-[14px] md:text-[18px] font-medium w-[95px] bg-transparent"
           type="text"
           placeholder="12 254 897"
+          :value="to"
+          @input="updateTo"
         />
         <span class="text-[#828892] text-[16px] md:text-[18px]">₽</span>
       </div>

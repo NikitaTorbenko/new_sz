@@ -34,29 +34,50 @@ const isOpenModal = ref(false);
 
 const openModalHandler = () => (isOpenModal.value = true);
 
-const allFilters = ref({
-  city: 1, // ====================== город (по умолчанию ростов)
-  count_room: [], // =============== количество комнат в квартире
-  flat_from: '', // ================ комнат в жк
-  flat_to: '',
-  floors_building_from: '', //====== этаж // ===================================================== расширенные фильтры
-  floors_building_to: '',
-  square_kitchen_from: '', //====== площадь кухни // ============================================= расширенные фильтры
-  square_kitchen_to: '',
-  flat_square_full_to: '', //====== общая площадь
-  flat_square_full_from: '',
-  from_cost: '', // =============== цена
-  to_cost: '',
-  zastroi: '', // ================= застройщик // ================================================ расширенные фильтры
-  jk_name: '', // ================= жк название
-  district: '', // ================ район
+const city = ref(1);
+const count_room = ref<number[]>([]);
+const flat_from = ref('');
+const flat_to = ref('');
+const floors_building_from = ref('');
+const floors_building_to = ref('');
+const square_kitchen_from = ref('');
+const square_kitchen_to = ref('');
+const flat_square_full_to = ref('');
+const flat_square_full_from = ref('');
+const from_cost = ref(''); // =================
+const to_cost = ref('');
+const zastroi = ref('');
+const jk_name = ref('');
+const district = ref('');
+const wall_material = ref(1);
+const count = ref(false);
 
-  wall_material: 1, // ============ материал стен //============================================== расширенные фильтры
-  count: false, // ================ количество квартир подходящее под данные фильтры
+// const allFilters = ref({
+//   city: 1, // ====================== город (по умолчанию ростов)
+//   count_room: [], // =============== количество комнат в квартире
+//   flat_from: '', // ================ комнат в жк
+//   flat_to: '',
+//   floors_building_from: '', //====== этаж // ==================================== расширенные фильтры
+//   floors_building_to: '',
+//   square_kitchen_from: '', //====== площадь кухни // ============================ расширенные фильтры
+//   square_kitchen_to: '',
+//   flat_square_full_to: '', //====== общая площадь
+//   flat_square_full_from: '',
+//   from_cost: '', // =============== цена
+//   to_cost: '',
+//   zastroi: '', // ================= застройщик // =============================== расширенные фильтры
+//   jk_name: '', // ================= жк название
+//   district: '', // ================ район
+//   wall_material: 1, // ============ материал стен //============================= расширенные фильтры
+//   count: false, // ================ количество квартир подходящее под данные фильтры
+// });
+
+watch(from_cost, () => {
+  console.log('from_cost', from_cost.value);
 });
 
-watch(allFilters, () => {
-  console.log('allFilters', allFilters.value);
+watch(to_cost, () => {
+  console.log('to_cost', to_cost.value);
 });
 </script>
 
@@ -67,9 +88,9 @@ watch(allFilters, () => {
     <div
       class="flex flex-nowrap sm:flex-wrap flex-col sm:flex-row gap-[16px] lg:gap-[8px] justify-start sm:justify-center lg:justify-between items-center sm:items-end mb-[20px]"
     >
-      <NumberOfRooms />
+      <NumberOfRooms v-model:count_room="count_room" />
       <Square />
-      <Price />
+      <Price v-model:from="from_cost" v-model:to="to_cost" />
       <ResidentialComplex class="hidden lg:block address-top" />
       <FullAddress />
 
