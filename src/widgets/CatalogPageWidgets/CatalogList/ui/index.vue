@@ -39,7 +39,7 @@ const cards = [
 
 <template>
   <div
-    class="grid grid-cols-[repeat(auto-fill,minmax(354px,1fr))] justify-items-center gap-[40px] lg:gap-[28px] lg:flex lg:flex-wrap lg:justify-between lg:items-center w-[100vw] md:[61vw] max-w-[1170px] mx-auto my-0 mt-[42px]"
+    class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] content-start justify-evenly gap-[40px] lg:gap-[28px] lg:flex lg:flex-wrap lg:items-center max-w-[1170px] mx-auto my-0 mt-[42px]"
   >
     <NewProductCard
       v-for="(item, index) in [

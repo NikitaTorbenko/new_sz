@@ -15,7 +15,9 @@ const onClick = e => console.log(e.get('coords'));
 </script>
 
 <template>
-  <div class="w-[60%] rounded-[15px] overflow-hidden sticky top-0 h-[100vh]">
+  <div
+    class="w-full md:w-[50%] rounded-[15px] overflow-hidden sticky top-0 h-[100vh]"
+  >
     <YandexMap
       @click="onClick"
       :style="{

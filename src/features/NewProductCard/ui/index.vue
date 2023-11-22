@@ -26,7 +26,7 @@ interface ProductCardProps {
 const props = defineProps<ProductCardProps>();
 </script>
 <template lang="html">
-  <div class="lg:w-[32%] 2xl:w-[30%] rounded-[15px] bg-white pb-[22px]">
+  <div class="w-full max-w-[367px] rounded-[15px] bg-white pb-[22px]">
     <div
       class="relative bg-[url('/img/product_example.jpg')] rounded-[15px] h-[215px] bg-cover w-full"
     >
@@ -61,7 +61,9 @@ const props = defineProps<ProductCardProps>();
         </p>
       </div>
       <div>
-        <p class="2xl:text-[18px] lg:text-[13px] font-bold text-[#333]">
+        <p
+          class="2xl:text-[18px] lg:text-[13px] whitespace-nowrap font-bold text-[#333]"
+        >
           {{ `от ${props.price} млн ₽` }}
         </p>
         <TextBtn

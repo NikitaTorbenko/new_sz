@@ -30,7 +30,7 @@ const isMap = ref(false);
   <Header v-model:isMap="isMap" />
   <MainFilter v-model:isMap="isMap" />
   <div class="flex flex-wrap md:flex-nowrap gap-[20px] bg-[#F4F6FB] px-[20px]">
-    <CatalogList :class="isMap && 'w-[50%]'" />
+    <CatalogList :class="isMap && 'w-[60%]'" />
     <Map v-if="isMap" />
   </div>
 </template>
