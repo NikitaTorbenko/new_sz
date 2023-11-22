@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import axios from 'axios';
 import { ref, provide, watch, onMounted } from 'vue';
 import { AllJk } from '../../../../shared/api/services';
 import { NumberOfRooms } from '../../Filters/NumberOfRooms';
@@ -16,12 +17,19 @@ import { ShowOffers } from '../../Filters/ShowOffers';
 import { FiltersModal } from '../../FiltersModal';
 import { TextBtn } from '../../../../shared/TextButton';
 
-const jkNames = ref<string[]>([]);
+interface JkObj {
+  name: string;
+  id: number;
+}
+
+// const jk = ref<JkObj[]>([]);
+const jk = ref<string[]>([]);
 
 onMounted(async () => {
   const { data: allJk } = await AllJk();
 
-  jkNames.value = Object.values(allJk.all_jk).map(item => item.jk_name);
+  // jk.value = allJk.all_jk;
+  jk.value = Object.values(allJk.all_jk).map(item => item.jk_name);
 });
 
 interface MainFilterProps {
@@ -53,7 +61,7 @@ const flat_to = ref('');
 const floors_building_from = ref(''); // = этаж //========================= расширенные фильтры
 const floors_building_to = ref('');
 
-const lit_floor_to = ref<number>(); // === этажей в доме
+const lit_floor_to = ref<number>(); // == этажей в доме
 const lit_floor_from = ref<number>();
 
 const square_kitchen_from = ref(''); // = площадь кухни //================= расширенные фильтры
@@ -67,7 +75,7 @@ const to_cost = ref('');
 
 const zastroi = ref(''); // ============ застройщик //==================== расширенные фильтры
 
-const jk_name = ref<string[]>([]); // ============ жк название
+const jk_name = ref<string[]>([]); // == жк название
 
 const district = ref(''); // =========== район
 
@@ -102,10 +110,7 @@ watch(lit_floor_from, () =>
         v-model:to="flat_square_full_to"
       />
       <Price v-model:from="from_cost" v-model:to="to_cost" />
-      <ResidentialComplex
-        v-model:jkNames="jkNames"
-        class="hidden lg:block address-top"
-      />
+      <ResidentialComplex v-model:jk="jk" class="hidden lg:block address-top" />
       <FullAddress />
 
       <FiltersModal
@@ -146,7 +151,7 @@ watch(lit_floor_from, () =>
 
     <div class="hidden lg:flex gap-[16px] justify-between items-end mb-[20px]">
       <ResidentialComplex
-        v-model:jkNames="jkNames"
+        v-model:jk="jk"
         class="hidden lg:block address-bottom"
       />
       <Neighborhood />
