@@ -1,5 +1,27 @@
 <script setup lang="ts">
 import { FilterItem } from '../../../../../shared/ui/FilterItem';
+
+interface SquareProps {
+  from: string;
+  to: string;
+}
+
+defineProps<SquareProps>();
+
+interface SquareEmit {
+  (e: 'update:from', value: string): void;
+  (e: 'update:to', value: string): void;
+}
+
+const emit = defineEmits<SquareEmit>();
+
+const updateFrom = (e: any) => {
+  emit('update:from', e.target.value);
+};
+
+const updateTo = (e: any) => {
+  emit('update:to', e.target.value);
+};
 </script>
 
 <template>
@@ -13,6 +35,8 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
           class="ml-[5px] outline-none text-[#333] text-[18px] font-medium w-[50px] bg-transparent"
           type="text"
           placeholder="120,5"
+          :value="from"
+          @input="updateFrom"
         />
       </div>
       <svg
@@ -65,6 +89,8 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
         class="outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[85px] bg-transparent"
         type="text"
         placeholder="Площадь до"
+        :value="to"
+        @input="updateTo"
       />
       <!-- </div> -->
     </div>

@@ -22,6 +22,28 @@ const updateFrom = (e: any) => {
 const updateTo = (e: any) => {
   emit('update:to', e.target.value);
 };
+
+// interface Props {
+//   from: string;
+//   to: string;
+// }
+
+// defineProps<Props>();
+
+// interface Emit {
+//   (e: 'update:from', value: string): void;
+//   (e: 'update:to', value: string): void;
+// }
+
+// const emit = defineEmits<Emit>();
+
+// const updateFrom = (e: any) => {
+//   emit('update:from', e.target.value);
+// };
+
+// const updateTo = (e: any) => {
+//   emit('update:to', e.target.value);
+// };
 </script>
 
 <template>
