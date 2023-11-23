@@ -12,7 +12,7 @@ interface Client {
     | undefined;
 }
 
-const REQUEST_TIMEOUT = 5000;
+const REQUEST_TIMEOUT = 10000;
 
 const API = axios.create({
   baseURL: 'http://192.168.100.175/',

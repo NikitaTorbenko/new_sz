@@ -10,8 +10,6 @@ const settings = ref({
   debug: false,
   version: '2.1',
 });
-
-const onClick = e => console.log(e.get('coords'));
 </script>
 
 <template>

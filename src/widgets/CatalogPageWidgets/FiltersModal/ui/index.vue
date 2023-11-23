@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import FilterItem from './FilterItem.vue';
 import CheckBox from './CheckBox.vue';

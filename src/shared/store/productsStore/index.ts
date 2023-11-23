@@ -33,6 +33,8 @@ export const useProductsStore = defineStore('products', () => {
     return filteredObj;
   }
 
+  const productData = ref<any[]>([]);
+
   const params = ref<IGetProduct>({});
 
   const count_room = ref<number[]>();
@@ -124,14 +126,18 @@ export const useProductsStore = defineStore('products', () => {
     };
     setparams(filterObj(newObj.value));
 
-    await getProduct(params.value).then(r => console.log('result', r));
+    const { data } = await getProduct(params.value)
+      // .then(res => Object.values(res.data))
+      .catch(e => console.error(e));
+
+    console.log('raw data', data.data);
+
+    productData.value = Object.values(data.data);
+    console.log('data in req', productData.value);
+
+    console.log('my data', Object.values(data.data));
   };
 
-  watch(from_cost, () => console.log('from_cost', from_cost.value));
-  watch(flat_square_full_from, () =>
-    console.log('flat_square_full_from', flat_square_full_from.value)
-  );
-  watch(params, () => console.log('params', params.value));
   return {
     params,
     count_room,
@@ -151,6 +157,7 @@ export const useProductsStore = defineStore('products', () => {
     jk_name,
     district,
     wall_material,
+    productData,
 
     setparams,
     setcount_room,
