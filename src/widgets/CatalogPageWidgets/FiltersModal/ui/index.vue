@@ -1,20 +1,11 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue';
+import { ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import FilterItem from './FilterItem.vue';
 import CheckBox from './CheckBox.vue';
 import InputFromTo from './InputFromTo.vue';
 import { CheckboxDropdown } from '../../../../shared/CheckboxDropdown';
-import { useProductStore } from '../../../../shared/store';
-
-// const floors_building_from = inject('floors_building_from');
-// const floors_building_to = inject('floors_building_to');
-// const lit_floor_to = inject('lit_floor_to');
-// const lit_floor_from = inject('lit_floor_from');
-// const square_kitchen_from = inject('square_kitchen_from');
-// const square_kitchen_to = inject('square_kitchen_to');
-// const zastroi = inject('zastroi');
-// const wall_material = inject('wall_material');
+import { useProductsStore } from '../../../../shared/store';
 
 const {
   floors_building_from,
@@ -25,16 +16,11 @@ const {
   square_kitchen_to,
   // zastroi,
   // wall_material,
-} = useProductStore();
+  getProductStore,
+} = useProductsStore();
 
 interface FiltersModalProps {
   isOpenModal: boolean;
-  // floors_building_from: string;
-  // floors_building_to: string;
-  // square_kitchen_from: string;
-  // square_kitchen_to: string;
-  // zastroi: string;
-  // wall_material: number;
 }
 
 const props = defineProps<FiltersModalProps>();
@@ -177,6 +163,7 @@ onClickOutside(modal, () => closeModal());
         </div>
       </div>
       <div
+        @click="getProductStore"
         class="flex justify-center items-center w-[260px] min-h-[48px] rounded-[15px] bg-blue-main text-[15px] text-[#fff] font-bold"
       >
         Показать 6123 предложений

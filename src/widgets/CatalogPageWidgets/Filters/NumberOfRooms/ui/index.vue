@@ -2,7 +2,7 @@
 import { FilterItem } from '../../../../../shared/ui/FilterItem';
 
 interface NumberOfRoomsProps {
-  count_room: number[];
+  count_room?: number[];
 }
 
 const props = defineProps<NumberOfRoomsProps>();

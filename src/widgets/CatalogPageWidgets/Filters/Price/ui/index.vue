@@ -1,27 +1,8 @@
 <script setup lang="ts">
 import { FilterItem } from '../../../../../shared/ui/FilterItem';
+import { useProductsStore } from '../../../../../shared/store';
 
-interface PriceProps {
-  from: string;
-  to: string;
-}
-
-defineProps<PriceProps>();
-
-interface PriceEmit {
-  (e: 'update:from', value: string): void;
-  (e: 'update:to', value: string): void;
-}
-
-const emit = defineEmits<PriceEmit>();
-
-const updateFrom = (e: any) => {
-  emit('update:from', e.target.value);
-};
-
-const updateTo = (e: any) => {
-  emit('update:to', e.target.value);
-};
+const { from_cost, to_cost, setfrom_cost, setto_cost } = useProductsStore();
 
 // interface Props {
 //   from: string;
@@ -59,8 +40,8 @@ const updateTo = (e: any) => {
           class="mx-[5px] outline-none text-[#333] text-[14px] md:text-[18px] font-medium w-[85px] bg-transparent"
           type="text"
           placeholder="1 254 897"
-          :value="from"
-          @input="updateFrom"
+          :value="from_cost"
+          @input="setfrom_cost"
         />
         <span class="text-[#828892] text-[16px] md:text-[18px]">₽</span>
       </div>
@@ -88,41 +69,11 @@ const updateTo = (e: any) => {
           class="mx-[5px] outline-none text-[#333] text-[14px] md:text-[18px] font-medium w-[95px] bg-transparent"
           type="text"
           placeholder="12 254 897"
-          :value="to"
-          @input="updateTo"
+          :value="to_cost"
+          @input="setto_cost"
         />
         <span class="text-[#828892] text-[16px] md:text-[18px]">₽</span>
       </div>
-    </div>
-    <div
-      class="flex lg:hidden items-center w-full min-w-[280px] rounded-[15px] bg-[#F3F3F6] py-[11px] px-[20px]"
-    >
-      <input
-        class="outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[80px] mr-[5px] bg-transparent"
-        type="text"
-        placeholder="Цена от"
-      />
-      <span class="text-[16px] text-[#A8AFBB]">₽</span>
-      <svg
-        class="mx-[20px]"
-        xmlns="http://www.w3.org/2000/svg"
-        width="2"
-        height="30"
-        viewBox="0 0 2 30"
-        fill="none"
-      >
-        <path
-          d="M1 0.555664L1 29.5557"
-          stroke="#828892"
-          stroke-opacity="0.19"
-        />
-      </svg>
-      <input
-        class="outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[80px] mr-[5px] bg-transparent"
-        type="text"
-        placeholder="Цена до"
-      />
-      <span class="text-[16px] text-[#A8AFBB]">₽</span>
     </div>
   </FilterItem>
 </template>

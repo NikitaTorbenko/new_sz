@@ -1,27 +1,34 @@
 <script setup lang="ts">
 import { FilterItem } from '../../../../../shared/ui/FilterItem';
+import { useProductsStore } from '../../../../../shared/store';
 
-interface SquareProps {
-  from: string;
-  to: string;
-}
+const {
+  flat_square_full_to,
+  flat_square_full_from,
+  setflat_square_full_to,
+  setflat_square_full_from,
+} = useProductsStore();
+// interface SquareProps {
+//   from?: string;
+//   to?: string;
+// }
 
-defineProps<SquareProps>();
+// defineProps<SquareProps>();
 
-interface SquareEmit {
-  (e: 'update:from', value: string): void;
-  (e: 'update:to', value: string): void;
-}
+// interface SquareEmit {
+//   (e: 'update:from', value: string): void;
+//   (e: 'update:to', value: string): void;
+// }
 
-const emit = defineEmits<SquareEmit>();
+// const emit = defineEmits<SquareEmit>();
 
-const updateFrom = (e: any) => {
-  emit('update:from', e.target.value);
-};
+// const updateFrom = (e: any) => {
+//   emit('update:from', e.target.value);
+// };
 
-const updateTo = (e: any) => {
-  emit('update:to', e.target.value);
-};
+// const updateTo = (e: any) => {
+//   emit('update:to', e.target.value);
+// };
 </script>
 
 <template>
@@ -35,8 +42,8 @@ const updateTo = (e: any) => {
           class="ml-[5px] outline-none text-[#333] text-[18px] font-medium w-[50px] bg-transparent"
           type="text"
           placeholder="120,5"
-          :value="from"
-          @input="updateFrom"
+          :value="flat_square_full_from"
+          @input="setflat_square_full_from"
         />
       </div>
       <svg
@@ -60,39 +67,10 @@ const updateTo = (e: any) => {
           class="ml-[5px] outline-none text-[#333] text-[18px] font-medium w-[50px] bg-transparent"
           type="text"
           placeholder="170,5"
+          :value="flat_square_full_to"
+          @input="setflat_square_full_to"
         />
       </div>
-    </div>
-    <div
-      class="flex lg:hidden items-center gap-[20px] w-full min-w-[280px] rounded-[15px] bg-[#F3F3F6] py-[11px] px-[20px]"
-    >
-      <input
-        class="mr-[11px] outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[85px] bg-transparent"
-        type="text"
-        placeholder="Площадь от"
-      />
-      <!-- <div class="flex items-center gap-[20px]"> -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="2"
-        height="30"
-        viewBox="0 0 2 30"
-        fill="none"
-      >
-        <path
-          d="M1 0.555664L1 29.5557"
-          stroke="#828892"
-          stroke-opacity="0.19"
-        />
-      </svg>
-      <input
-        class="outline-none placeholder:text-[#333] text-[#333] text-[14px] w-[85px] bg-transparent"
-        type="text"
-        placeholder="Площадь до"
-        :value="to"
-        @input="updateTo"
-      />
-      <!-- </div> -->
     </div>
   </FilterItem>
 </template>

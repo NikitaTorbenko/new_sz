@@ -3,7 +3,7 @@ import { FilterItem } from '../../../../../shared/ui/FilterItem';
 import { CheckboxDropdown } from '../../../../../shared/CheckboxDropdown';
 
 interface ResidentialComplexProps {
-  jk: string[];
+  jk?: string[];
 }
 
 const props = defineProps<ResidentialComplexProps>();
