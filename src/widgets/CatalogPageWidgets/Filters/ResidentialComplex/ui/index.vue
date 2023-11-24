@@ -21,12 +21,10 @@ const props = defineProps<ResidentialComplexProps>();
 </template>
 
 <!-- <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { FilterItem } from '../../../../../shared/ui/FilterItem';
 import { CheckboxDropdown } from '../../../../../shared/CheckboxDropdown';
-
-const dd = ref(0);
-const jkNames = ref<string[]>([]);
+import { AllJk } from '../../../../../shared/api/services';
 
 interface JkObj {
   jk_name: string;
@@ -37,17 +35,34 @@ interface ResidentialComplexProps {
   jk: JkObj[];
 }
 
-const props = defineProps<ResidentialComplexProps>();
+const flag = ref(false);
 
-jkNames.value = Object.values(props.jk).map(item => item.jk_name);
-// setInterval(() => dd.value++, 1000);
-watch(dd, () => console.log('props', props.jk));
+const jk = ref<JkObj[]>([]);
+
+watch(flag, async () => {
+  if (flag) {
+    // @ts-ignore
+    const { data } = await AllJk();
+
+    jk.value = data.all_jk;
+
+    console.log(jk.value);
+  }
+});
+
+const jkNames = ref<string[]>([]);
+
+Object.values(jk).forEach(el => console.log('el', el));
+
+// jkNames.value = Object.values(jk).map(item => item.jk_name);
+
+const handler = () => (flag.value = true);
 </script>
 
 <template>
   <FilterItem class="w-full lg:w-auto" title="Жилой комплекс">
     <CheckboxDropdown
-      v-if="!props.jk"
+      @click="handler"
       :options="jkNames"
       class="bg-[#F3F3F6] rounded-[15px] py-[14px] w-full"
       title="Любой"

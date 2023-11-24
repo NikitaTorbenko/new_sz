@@ -130,6 +130,8 @@ export const useProductsStore = defineStore('products', () => {
       // .then(res => Object.values(res.data))
       .catch(e => console.error(e));
 
+    console.log('params ', params.value);
+
     console.log('raw data', data.data);
 
     productData.value = Object.values(data.data);
